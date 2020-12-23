@@ -1,8 +1,7 @@
 package main
 
 import (
-	"fmt"
-	"github.com/sorokinkir/bgo3.1/pkg/card"
+	"github.com/sorokinkir/bgo3/pkg/card"
 	"time"
 )
 
@@ -33,5 +32,12 @@ func main() {
 		},
 	}
 
-	fmt.Println(master.Transactions[0])
+	transactionItem := card.Transaction{
+		Id:       4,
+		Amount:   50_000.00,
+		DateTime: time.Now().Unix(),
+		MCC:      "5533",
+		Status:   "Обработано",
+	}
+	card.AddTransaction(master, &transactionItem)
 }
