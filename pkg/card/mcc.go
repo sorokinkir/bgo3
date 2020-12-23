@@ -1,5 +1,6 @@
 package card
 
+// TranslateMCC ....
 func TranslateMCC(code string) string {
 	// представим, что mcc читается из файла (научимся позже)
 	mcc := map[string]string{
@@ -8,11 +9,9 @@ func TranslateMCC(code string) string {
 		"5912": "Аптеки",
 	}
 	badStatus := "Категория не указана"
-
-	for i, value := range mcc {
-		if i == code {
-			return value
-		}
+	value, ok := mcc[code]
+	if !ok {
+		return badStatus
 	}
-	return badStatus
+	return value
 }
