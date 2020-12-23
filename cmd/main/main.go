@@ -51,4 +51,7 @@ func main() {
 	fmt.Println("------ Пример использования SumByMCC ------")
 	total := card.SumByMCC(master.Transactions, codesMCC)
 	fmt.Printf("Сумма составляет: %v руб.\n", total)
+
+	category := card.TranslateMCC(master.Transactions[0].MCC)
+	fmt.Printf("Категория: %v\n", category)
 }
