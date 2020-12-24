@@ -47,3 +47,21 @@ func SumByMCC(transactions []*Transaction, mcc []string) int64 {
 
 	return result
 }
+
+// LastNTransactions get last transactions
+func LastNTransactions(card *Card, n int) []*Transaction {
+	countsTransactions := len(card.Transactions)
+	fmt.Printf("Слайс содержит %v элемента(ов) и запрашиваем %v транзакции\n", countsTransactions, n)
+
+	r := make([]*Transaction, 0, countsTransactions)
+	for _, row := range card.Transactions {
+		r = append(r, row)
+	}
+
+	if n > countsTransactions {
+		return r[:]
+	}
+
+	last := r[countsTransactions-n:]
+	return last
+}

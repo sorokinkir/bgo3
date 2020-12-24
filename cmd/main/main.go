@@ -55,4 +55,8 @@ func main() {
 
 	category := card.TranslateMCC(master.Transactions[0].MCC)
 	fmt.Printf("Категория: %v\n", category)
+
+	fmt.Println("------ Пример использования LastNTransactions ------")
+	lastTransactions := card.LastNTransactions(master, 3)
+	fmt.Println(lastTransactions)
 }
