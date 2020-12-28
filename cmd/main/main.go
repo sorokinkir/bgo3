@@ -9,7 +9,7 @@ import (
 func main() {
 	master := &card.Card{
 		Transactions: []*card.Transaction{
-			
+
 			{
 				ID:       1,
 				Amount:   735.55,
