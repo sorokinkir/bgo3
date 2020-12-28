@@ -9,21 +9,22 @@ import (
 func main() {
 	master := &card.Card{
 		Transactions: []*card.Transaction{
-			&card.Transaction{
+
+			{
 				ID:       1,
 				Amount:   735.55,
 				DateTime: time.Now().Unix(),
 				MCC:      "5411",
 				Status:   "Операция в обработке",
 			},
-			&card.Transaction{
+			{
 				ID:       2,
 				Amount:   2_000.00,
 				DateTime: time.Now().Unix(),
 				MCC:      "0000",
 				Status:   "Пополнения",
 			},
-			&card.Transaction{
+			{
 				ID:       3,
 				Amount:   1_203.91,
 				DateTime: time.Now().Unix(),
@@ -51,4 +52,11 @@ func main() {
 	fmt.Println("------ Пример использования SumByMCC ------")
 	total := card.SumByMCC(master.Transactions, codesMCC)
 	fmt.Printf("Сумма составляет: %v руб.\n", total)
+
+	category := card.TranslateMCC(master.Transactions[0].MCC)
+	fmt.Printf("Категория: %v\n", category)
+
+	fmt.Println("------ Пример использования LastNTransactions ------")
+	lastTransactions := card.LastNTransactions(master, 3)
+	fmt.Println(lastTransactions)
 }
